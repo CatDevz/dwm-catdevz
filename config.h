@@ -116,7 +116,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,				XK_r,	   spawn,		   SHCMD("nautilus") },
 
 	// Screenshot
-	{ MODKEY|ShiftMask,				XK_s,	   spawn,		   SHCMD("spectacle -rc") },
+	{ MODKEY|ShiftMask,				XK_s,	   spawn,		   SHCMD("screengrab -r") },
 
 	// Utilities (dmenu & terminal)
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
