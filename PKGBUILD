@@ -1,5 +1,5 @@
-pkgname=dwm-catdevz
-pkgver=6.2.r1.a532749
+pkgname=dwm-catdevz-git
+pkgver=6.2.r2.6462d07
 pkgrel=1
 epoch=
 pkgdesc="My personal build of DWM"
