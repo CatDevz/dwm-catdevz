@@ -8,71 +8,28 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const int focusonwheel       = 1;
 static const int user_bh            = 30;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
 
-static const char *fonts[]          = { "Fantasque Sans Mono Nerd Font:size=15:antialias=true:autohint=true", "ttf-twemoji:size=15" };
+static const char *fonts[]          = { 
+	"Fantasque Sans Mono Nerd Font:size=15:antialias=true:autohint=true", 
+	"Twemoji:size=15:antialias=true:autohint=true" 
+};
 
 // Colors
-static const char col_gb_black[]	= "#131515";
-static const char col_gb_bg[]		= "#1d2021";
+static const char col_gb_bg[]	    = "#1d2021";
 static const char col_gb_bgm[]      = "#282828";
-static const char col_gb_bgs[]      = "#32302f";
-static const char col_gb_fg[]       = "#fbf1c7";
-
-static const char col_gb_red1[]     = "#cc241d";
-static const char col_gb_red2[]     = "#fb4934";
-
-static const char col_gb_green1[]   = "#98971a";
-static const char col_gb_green2[]   = "#b8bb26";
-
-static const char col_gb_yellow1[]  = "#d79921";
-static const char col_gb_yellow2[]  = "#fabd2f";
-
-static const char col_gb_blue1[]    = "#458588";
-static const char col_gb_blue2[]    = "#83a598";
-
-static const char col_gb_purple1[]  = "#b16286";
-static const char col_gb_purple2[]  = "#83869b";
-
-static const char col_gb_aqua1[]    = "#689d6a";
-static const char col_gb_aqua2[]    = "#8ec07c";
-
-static const char col_gb_gray1[]    = "#a89984";
-static const char col_gb_gray2[]    = "#928374";
-static const char col_gb_gray3[]    = "#665c54";
-static const char col_gb_gray4[]    = "#3c3836";
-static const char col_gb_gray5[]    = "#a89984";
-
-
-static const char col_gb_orange1[]  = "#d65d0e";
-static const char col_gb_orange2[]  = "#fe8019";
+static const char col_gb_gray[]     = "#928374";
+static const char col_gb_orange[]   = "#fe8019";
 
 static const char *colors[][3]      = {
-	/*               fg         bg         border   */
-	[SchemeNorm]    = { col_gb_gray2,	col_gb_bgm,	col_gb_bgm },
-	[SchemeSel]     = { col_gb_orange2,	col_gb_bgm,	col_gb_bg },
-	[SchemeSelTag]	= { col_gb_orange2,	col_gb_bgm,	col_gb_bgm },
-	//[SchemeSel2]     = { col_gb_fg,      col_gb_bg,     col_gb_bg },
-	//[SchemeUrgent]   = { col_gb_fg,      col_gb_bg,     col_gb_bg },
-	//[SchemeTitle]    = { col_gb_fg,      col_gb_bgs,    col_gb_bg },
-	//[SchemeLt]       = { col_gb_orange2, col_gb_bgm,    col_gb_bg },
-	//[SchemeNotify]   = { col_gb_red1,    col_gb_bg,     col_gb_bg },
-	//[SchemeStatus]   = { col_gb_aqua2,   col_gb_bg,     col_gb_bg },
-	//[SchemeIndOff]   = { col_gb_green2,  col_gb_bg,     col_gb_bg },
-	//[SchemeIndOn]    = { col_gb_blue2,   col_gb_bg,     col_gb_bg },
+	/*                  fg                  bg              border     */
+	[SchemeNorm]    = { col_gb_gray,	col_gb_bgm,	col_gb_bgm },
+	[SchemeSel]     = { col_gb_orange,	col_gb_bgm,	col_gb_bg  },
+	[SchemeSelTag]	= { col_gb_orange,	col_gb_bgm,	col_gb_bgm },
 };
 
 /* tagging */
 static const char *tags[] = { "", "", "", "", "", "" };
-static const char *tagsalt[] = { "", "", "", "", "", "" };
 
-static const Rule rules[] = {
-	/* xprop(1):
-	 *	WM_CLASS(STRING) = instance, class
-	 *	WM_NAME(STRING) = title
-	 */
-	/* class      instance    title       tags mask     iscentered   isfloating   monitor */
-	{ "kcalc",	  NULL,		  NULL,		  0, 			1,			 1,			  -1 },
-	{ "spectacle",NULL,		  NULL,		  0, 			1, 			 1, 		  -1 },
-};
+static const Rule rules[] = {0};
 
 /* layout(s) */
 static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
@@ -85,7 +42,6 @@ static const Layout layouts[] = {
 	{ "",		NULL },    /* no layout function means floating behavior */
 	{ "",		monocle },
 	{ "|M|",	centeredmaster },
-	{ ">M>",	centeredfloatingmaster },
 };
 
 /* key definitions */
@@ -110,42 +66,41 @@ static const char *termcmd[]  = { "kitty", NULL };
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	// Applications
-	{ MODKEY|ShiftMask,				XK_d,	   spawn,		   SHCMD("discord") },
-	{ MODKEY|ShiftMask,				XK_e,	   spawn,		   SHCMD("qutebrowser") },
-	{ MODKEY|ShiftMask,				XK_h,	   spawn,		   SHCMD("kitty htop") },
-	{ MODKEY|ShiftMask,				XK_r,	   spawn,		   SHCMD("nautilus") },
+	{ MODKEY|ShiftMask,		XK_d,	   spawn,	   SHCMD("discord") },
+	{ MODKEY|ShiftMask,		XK_e,	   spawn,	   SHCMD("qutebrowser") },
+	{ MODKEY|ShiftMask,		XK_h,	   spawn,	   SHCMD("kitty htop") },
+	{ MODKEY|ShiftMask,		XK_r,	   spawn,	   SHCMD("nautilus") },
 
 	// Screenshot
-	{ MODKEY|ShiftMask,				XK_s,	   spawn,		   SHCMD("screengrab -r") },
+	{ MODKEY|ShiftMask,		XK_s,	   spawn,	   SHCMD("screengrab -r") },
 
 	// Utilities (dmenu & terminal)
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 
 	// Multimedia
-	{ 0,                        0x1008ffb2,    spawn,          SHCMD("pulsemixer --id source-1 --toggle-mute ; kill -44 $(pidof dwmblocks)") },
+	{ 0,                        0x1008ffb2,    spawn,          SHCMD("pulsemixer --id \"$(pulsemixer --list-sources | grep 'Default' | awk '{print $3}' | sed 's/,//')\" --toggle-mute ; kill -44 $(pidof dwmblocks)") },
 	{ 0,                        0x1008ff13,    spawn,          SHCMD("pulsemixer --change-volume +5 ; kill -44 $(pidof dwmblocks)") },
 	{ 0,                        0x1008ff11,    spawn,          SHCMD("pulsemixer --change-volume -5 ; kill -44 $(pidof dwmblocks)") },
-	{ 0,                        0x1008ff12,    spawn,          SHCMD("pulsemixer --set-volume 0 ; kill -44 $(pidof dwmblocks)") },
+	{ 0,                        0x1008ff12,    spawn,          SHCMD("pulsemixer --toggle-mute ; kill -44 $(pidof dwmblocks)") },
 	
-	{ 0,                        0x1008ff03,    spawn,          SHCMD("brightnessctl -d 'intel_backlight' set 5%-") },
-	{ 0,                        0x1008ff02,    spawn,          SHCMD("brightnessctl -d 'intel_backlight' set 5%+") },
+	{ 0,                        0x1008ff03,    spawn,          SHCMD("brightnessctl set 5%-") },
+	{ 0,                        0x1008ff02,    spawn,          SHCMD("brightnessctl set 5%+") },
 
-	{ ALTMOD,                       0xff52,    spawn,          SHCMD("mpv ~/Music/ --shuffle --no-video") },
-	{ ALTMOD,                       0xff54,    spawn,          SHCMD("playerctl play-pause") },
-	{ ALTMOD,                       0xff51,    spawn,          SHCMD("playerctl previous") },
-	{ ALTMOD,                       0xff53,    spawn,          SHCMD("playerctl next") },
+	{ MODKEY,                       0xff54,    spawn,          SHCMD("playerctl play-pause") },
+	{ MODKEY,                       0xff51,    spawn,          SHCMD("playerctl previous") },
+	{ MODKEY,                       0xff53,    spawn,          SHCMD("playerctl next") },
 
-	{ MODKEY,                       XK_e,	   spawn,	       SHCMD("splatmoji copy") },
+	{ MODKEY,                       XK_e,	   spawn,	   SHCMD("splatmoji copy") },
 
-	{ MODKEY,                       XK_Down,   moveresize,     {.v = "0x 25y 0w 0h" } },
-	{ MODKEY,                       XK_Up,     moveresize,     {.v = "0x -25y 0w 0h" } },
-	{ MODKEY,                       XK_Right,  moveresize,     {.v = "25x 0y 0w 0h" } },
-	{ MODKEY,                       XK_Left,   moveresize,     {.v = "-25x 0y 0w 0h" } },
-	{ MODKEY|ShiftMask,             XK_Down,   moveresize,     {.v = "0x 0y 0w 25h" } },
-	{ MODKEY|ShiftMask,             XK_Up,     moveresize,     {.v = "0x 0y 0w -25h" } },
-	{ MODKEY|ShiftMask,             XK_Right,  moveresize,     {.v = "0x 0y 25w 0h" } },
-	{ MODKEY|ShiftMask,             XK_Left,   moveresize,     {.v = "0x 0y -25w 0h" } },
+	{ SUPERMOD,                     XK_Down,   moveresize,     {.v = "0x 25y 0w 0h" } },
+	{ SUPERMOD,                     XK_Up,     moveresize,     {.v = "0x -25y 0w 0h" } },
+	{ SUPERMOD,                     XK_Right,  moveresize,     {.v = "25x 0y 0w 0h" } },
+	{ SUPERMOD,                     XK_Left,   moveresize,     {.v = "-25x 0y 0w 0h" } },
+	{ SUPERMOD|ShiftMask,           XK_Down,   moveresize,     {.v = "0x 0y 0w 25h" } },
+	{ SUPERMOD|ShiftMask,           XK_Up,     moveresize,     {.v = "0x 0y 0w -25h" } },
+	{ SUPERMOD|ShiftMask,           XK_Right,  moveresize,     {.v = "0x 0y 25w 0h" } },
+	{ SUPERMOD|ShiftMask,           XK_Left,   moveresize,     {.v = "0x 0y -25w 0h" } },
 
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
@@ -161,7 +116,6 @@ static Key keys[] = {
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_u,      setlayout,      {.v = &layouts[3]} },
-	{ MODKEY,                       XK_o,      setlayout,      {.v = &layouts[4]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY|ShiftMask,             XK_f,      togglefullscr,  {0} },
