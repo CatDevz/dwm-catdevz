@@ -1,5 +1,5 @@
 pkgname=dwm-catdevz-git
-pkgver=6.2.r2.6462d07
+pkgver=6.2.r5.6df49f1
 pkgrel=1
 epoch=
 pkgdesc="My personal build of DWM"
@@ -7,7 +7,7 @@ arch=(x86_64)
 url="https://github.com/CatDevz/dwm-catdevz.git"
 license=('MIT')
 groups=()
-depends=(pulsemixer brightnessctl playerctl)
+depends=(pulsemixer brightnessctl playerctl nerd-fonts-fantasque-sans-mono ttf-fira-go)
 makedepends=(git)
 checkdepends=()
 optdepends=()
