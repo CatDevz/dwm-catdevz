@@ -29,7 +29,10 @@ static const char *colors[][3]      = {
 /* tagging */
 static const char *tags[] = { "", "", "", "", "", "" };
 
-static const Rule rules[] = {0};
+static const Rule rules[] = {
+	{ "kcalc",		NULL,	NULL,	0,	1,	1,	-1 },
+	{ "spectacle",	NULL,	NULL,	0,	1,	1,	-1 },
+};
 
 /* layout(s) */
 static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
